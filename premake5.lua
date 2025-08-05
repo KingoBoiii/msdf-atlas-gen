@@ -4,25 +4,29 @@ project "msdf-atlas-gen"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
-  staticruntime "off"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files 	{
 		"msdf-atlas-gen/**.h",
-    "msdf-atlas-gen/**.hpp",
-    "msdf-atlas-gen/**.cpp"
+		"msdf-atlas-gen/**.hpp",
+		"msdf-atlas-gen/**.cpp",
+		"artery-font-format/**.h",
+		"artery-font-format/**.hpp",
+		"artery-font-format/**.cpp"
 	}
 
 	includedirs 	{
 		"msdf-atlas-gen",
 		"msdfgen",
-		"msdfgen/include"
+		"artery-font-format"
 	}
 
 	defines 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"MSDFGEN_PUBLIC="
 	}
 
 	links {
@@ -43,4 +47,4 @@ project "msdf-atlas-gen"
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "on"
-    symbols "off"
+		symbols "off"
